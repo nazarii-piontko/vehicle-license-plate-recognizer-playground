@@ -1,0 +1,7 @@
+classes=1
+train=data/yolo/train.txt
+test=data/yolo/test.txt
+valid=data/yolo/test.txt
+names=data/yolo/names.txt
+backup=data/yolo/backup
+results=data/yolo/results

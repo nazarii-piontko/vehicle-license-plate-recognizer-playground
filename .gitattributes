@@ -1,0 +1,4 @@
+cudnn-10.1-linux-x64-v7.6.5.32.solitairetheme8 filter=lfs diff=lfs merge=lfs -text
+*.conv.74- filter=lfs diff=lfs merge=lfs -text
+*.conv.74 filter=lfs diff=lfs merge=lfs -text
+*.backup filter=lfs diff=lfs merge=lfs -text

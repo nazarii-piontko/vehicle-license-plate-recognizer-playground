@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Vehicle License Plate Detector</title>
+  </head>
+
+  <body>
+    <form>
+      <input type="file" name="file" />
+      <input type="submit" value="Detect" name="submit" />
+    </form>
+    <img id="image" style="max-width:1024px">
+    <script>
+        const form = document.querySelector('form')
+
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+
+          const files = document.querySelector('[type=file]').files
+          const file = files[0]
+
+          var reader = new FileReader();
+
+          reader.onload = (function(theFile) {
+            return function(e) {
+
+              fetch(window.location.href, {
+                method: 'POST',
+                body: e.target.result,
+              }).then(response => {
+                response.blob().then(blobResponse => {
+                    data = blobResponse;
+                    const urlCreator = window.URL || window.webkitURL;
+                    document.getElementById('image').src = urlCreator.createObjectURL(data);
+                  })
+              }).catch(() => {
+                    console.log("POST Error")
+                })
+            };
+          })(file);
+
+          reader.readAsArrayBuffer(file);
+        })
+    </script>
+  </body>
+</html>
